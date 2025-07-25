@@ -1,9 +1,24 @@
 (async function () {
   const urlParams = new URLSearchParams(window.location.search);
   const target = urlParams.get("target");
+  const messageBox = document.getElementById('messageBox');
+
+  function updateMessage(title, message, isError = false) {
+    messageBox.innerHTML = `
+      <h1>${title}</h1>
+      <p>${message}</p>
+      ${!isError ? '<div class="loading"></div>' : ''}
+    `;
+    
+    if (isError) {
+      messageBox.classList.add('error');
+    } else {
+      messageBox.classList.remove('error');
+    }
+  }
 
   if (!target) {
-    document.body.innerHTML = `<h1>Missing target</h1><p>Please provide a ?target= parameter in the URL.</p>`;
+    updateMessage('Missing Target', 'Please provide a ?target= parameter in the URL.', true);
     return;
   }
 
@@ -14,12 +29,15 @@
     const destination = redirects[target];
 
     if (destination) {
-      window.location.href = destination;
+      updateMessage('Redirecting...', `Taking you to ${target}...`);
+      setTimeout(() => {
+        window.location.href = destination;
+      }, 2000);
     } else {
-      document.body.innerHTML = `<h1>404 Not Found</h1><p>No redirect found for target "${target}".</p>`;
+      updateMessage('404 Not Found', `No redirect found for target "${target}".`, true);
     }
   } catch (error) {
     console.error("Redirect error:", error);
-    document.body.innerHTML = `<h1>Error</h1><p>Could not load redirects.json.</p>`;
+    updateMessage('Error', 'Could not load redirects.json.', true);
   }
 })();

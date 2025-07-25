@@ -2,11 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
+  <title>BotBee - Redirecting...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .logo {
+      margin-bottom: 40px;
+    }
+
+    .logo img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    .message-box {
+      border: 2px solid #FFD700;
+      border-radius: 10px;
+      padding: 25px;
+      background: rgba(255, 215, 0, 0.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .message-box h1 {
+      color: #FFD700;
+      margin-bottom: 15px;
+      font-size: 2.5em;
+    }
+
+    .message-box p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    .loading {
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #FFD700;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 10px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error {
+      color: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+
+    .error h1 {
+      color: #ff6b6b;
+    }
+
+    @media (max-width: 768px) {
+      .logo img {
+        max-width: 200px;
+      }
+      
+      .message-box {
+        padding: 20px;
+        margin: 0 10px;
+      }
+      
+      .message-box h1 {
+        font-size: 2em;
+      }
+      
+      .message-box p {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting you, please wait...</p>
+  <div class="container">
+    <div class="logo">
+      <img src="media/BB Logo.jpg" alt="BotBee Logo">
+    </div>
+    
+    <div class="message-box" id="messageBox">
+      <h1>Redirecting...</h1>
+      <p>Please wait while we redirect you to your destination.</p>
+      <div class="loading"></div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
