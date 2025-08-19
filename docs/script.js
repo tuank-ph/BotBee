@@ -29,7 +29,8 @@
     const destination = redirects[target];
 
     if (destination) {
-      updateMessage('Redirecting...', `Taking you to ${target}...`);
+      // updateMessage('Redirecting...', `Taking you to ${target}...`);
+      updateMessage('Redirecting...', `Redirecting... please wait`);
       setTimeout(() => {
         window.location.href = destination;
       }, 2000);
