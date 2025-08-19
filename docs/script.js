@@ -30,7 +30,7 @@
 
     if (destination) {
       // updateMessage('Redirecting...', `Taking you to ${target}...`);
-      updateMessage('Redirecting...', `Redirecting... please wait`);
+      updateMessage('Redirecting...', `Please wait...`);
       setTimeout(() => {
         window.location.href = destination;
       }, 2000);
