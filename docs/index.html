@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+<script>
+  var params = new URLSearchParams(window.location.search);
+  var target = params.get('target');
+  var dest = 'https://botb-rc.github.io/';
+  if (target) {
+    dest += '?t=' + encodeURIComponent(target);
+  }
+  window.location.replace(dest);
+</script>
+</head>
+<body>
+<p>Redirecting... <a id="link" href="#">click here if not redirected</a></p>
+<script>
+  document.getElementById('link').href = dest;
+</script>
+</body>
+</html>
